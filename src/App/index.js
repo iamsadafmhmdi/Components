@@ -3,8 +3,7 @@ import Button from '../components/Button/index';
 
 
 function App(){
-
-
+    
     return(
         <div>
             <Button value={'click'} disabled={false}/>
