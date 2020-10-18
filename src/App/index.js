@@ -1,9 +1,14 @@
 import React from 'react';
+import Button from '../components/Button/index';
 
 
 function App(){
+
+
     return(
-        <div></div>
+        <div>
+            <Button value={'click'} disabled={false}/>
+        </div>
     );
 
 };
