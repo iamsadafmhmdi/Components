@@ -2,11 +2,10 @@ import React from 'react';
 import './index.css'
 
 
-function Button ({disabled, value, handleClickButton}){
-    
+function Button ({disabled=false, value, handleClick}) {
     return(
-        <button className={disabled ? 'disabled' : 'button'} onClick={handleClickButton}>{value}</button>
+        <button className={disabled ? 'disabled' : undefined} onClick={handleClick}>{value}</button>
     );
-    
-}
+};
+
 export default Button;
