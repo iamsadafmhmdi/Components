@@ -2,9 +2,9 @@ import React from 'react';
 import './index.css'
 
 
-function Button ({disabled=false, value, onClick}) {
+function Button ({disabled=false, children, onClick}) {
     return(
-        <button className={disabled ? 'disabled' : undefined} onClick={onClick}>{value}</button>
+        <button className={disabled ? 'disabled' : undefined} onClick={onClick}>{children}</button>
     );
 };
 
