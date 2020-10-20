@@ -1,16 +1,15 @@
 import React from 'react';
-import Button from '../Button/index';
 import './index.css'
 
 
 function Dialog({header, description, action}) {
     return(
-        <div className='container flex-display-center'>
-            <div className='dialog'>
-                <h2 id='header'>
+        <div className= 'container flex-display-center'>
+            <div className= 'dialog'>
+                <h2 id= 'header'>
                     {header}
                 </h2>
-                <div id='description'>
+                <div id= 'description'>
                     {description}
                 </div>
                 <div>
