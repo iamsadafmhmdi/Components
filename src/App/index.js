@@ -1,10 +1,11 @@
 import React from 'react';
+import Button from '../components/Button/index';
 
 
 function App() {
     return(
         <div>
-            App
+            <Button>click</Button>
         </div>
     );
 };
