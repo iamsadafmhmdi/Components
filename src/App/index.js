@@ -1,10 +1,9 @@
-import React,{useState, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import Button from '../components/Button/index';
 import Dialog from '../components/ِDialog/index';
 
 
 function App() {
-
     const [showDialog, setShowDialog]= useState(false);
     const handleClickButton= useCallback(()=> {
         setShowDialog(true);
