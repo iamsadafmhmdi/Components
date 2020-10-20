@@ -6,7 +6,7 @@ function App() {
     return(
         <div>
             <Button value={'click'}/>
-gi        </div>
+        </div>
     );
 };
 
