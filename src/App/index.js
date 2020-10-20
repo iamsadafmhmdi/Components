@@ -1,11 +1,11 @@
-import React, { Children } from 'react';
+import React from 'react';
 import Button from '../components/Button/index';
 
 
 function App() {
     return(
         <div>
-            <Button value={'click'}>click</Button>
+            <Button>click</Button>
         </div>
     );
 };
