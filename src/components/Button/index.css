@@ -1,4 +1,4 @@
-button{
+button {
     color: aliceblue;
     background-color: rgb(32, 156, 115);
     padding: 5px 14px 4px 14px;
@@ -7,11 +7,11 @@ button{
     margin: 5px;
 }
 
-button:hover{
+button:hover {
     background-color: rgb(35, 88, 88);
 }
 
-.disabled{
+.disabled {
     background-color: rgb(32, 156, 115, 0.6);
     color: aliceblue;
     padding: 5px 14px 4px 14px;
