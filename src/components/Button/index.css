@@ -19,3 +19,7 @@ button:hover {
     text-align: center;
     margin: 5px;
 }
+
+.disabled:hover{
+    background-color: rgb(32, 156, 115, 0.6);
+}

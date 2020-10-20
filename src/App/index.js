@@ -26,7 +26,7 @@ function App() {
                             Confirm
                         </Button>
                         <Button
-                        disabled= {'disabled'}>
+                        disabled= {'disabled'} disabled>
                             Cancel
                         </Button>
                     </div>
