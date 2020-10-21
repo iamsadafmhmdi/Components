@@ -5,9 +5,9 @@ import Dialog from '../components/ِDialog/index';
 
 function App() {
     const [showDialog, setShowDialog]= useState(false);
-    const handleClickButton= useCallback(()=> {
+    const handleClickButton= useCallback(() => {
         setShowDialog(true);
-    },[]);
+    }, []);
 
     return(
         <div>
