@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css'
 
 
-function Dialog({header, description, action}) {
+function Dialog({header,description,action}) {
     return(
         <div className = 'container flex-display-center'>
             <div className = 'dialog'>
