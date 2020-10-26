@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import Button from '../components/Button/index';
-import Dialog from '../components/ِDialog/index';
+import {Button, Dialog, TextInput} from '../../components';
 
 
 function App() {
