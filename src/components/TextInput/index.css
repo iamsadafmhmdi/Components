@@ -3,15 +3,6 @@ input {
     background-color: rgb(226, 226, 218);
     border: none;
     border-bottom: 1px solid rgb(75, 74, 74);
-    margin: 3px;
     border-radius: 5px 5px 0px 0px;
     font-size: medium;
-}
-
-input:focus {
-    outline: none;
-}
-
-.smallTextInput {
-    width: 80px;
 }

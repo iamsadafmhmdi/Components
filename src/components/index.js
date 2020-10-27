@@ -1,3 +1,3 @@
-export {default as Button} from './Button/index';
-export {default as Dialog} from './ِDialog/index';
-export {default as TextInput} from './InputText';
+export {default as Button} from './Button';
+export {default as Dialog} from './ِDialog';
+export {default as TextInput} from './TextInput';
