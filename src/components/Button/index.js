@@ -2,9 +2,21 @@ import React from 'react';
 import './index.css'
 
 
-function Button ({disabled=false,children,onClick,value}) {
+function Button ({
+    children,
+    danger=false,
+    disabled=false,
+    onClick,
+    value,
+}) {
     return(
-        <button className={disabled ? 'disabled' : undefined} onClick={onClick} value={value}>{children}</button>
+        <button
+            className={danger && disabled ? 'disabled danger' : danger ? 'danger' : disabled ? 'disabled' : undefined}
+            onClick={disabled ? undefined : onClick}
+            value={value}
+            tabIndex={disabled ? -1 : undefined}>
+            {children}
+        </button>
     );
 };
 
