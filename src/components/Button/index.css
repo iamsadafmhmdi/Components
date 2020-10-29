@@ -4,7 +4,6 @@ button {
     padding: 5px 14px 4px 14px;
     border: none;
     text-align: center;
-    margin: 5px;
 }
 
 button:hover {
@@ -13,13 +12,29 @@ button:hover {
 
 .disabled {
     background-color: rgb(32, 156, 115, 0.6);
-    color: aliceblue;
-    padding: 5px 14px 4px 14px;
-    border: none;
-    text-align: center;
-    margin: 5px;
+    cursor: not-allowed;
 }
 
-.disabled:hover{
+.disabled:hover {
     background-color: rgb(32, 156, 115, 0.6);
+}
+
+.disabled:focus {
+    outline: none;
+}
+
+.danger {
+    background-color: rgb(218, 28, 28);
+}
+
+.danger:hover {
+    background-color: rgb(194, 26, 26);
+}
+
+.disabled.danger {
+    background-color: rgba(218, 28, 28, 0.616);
+}
+
+.disabled.danger:hover {
+    background-color: rgba(218, 28, 28, 0.616);
 }
