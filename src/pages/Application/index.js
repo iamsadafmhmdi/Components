@@ -91,11 +91,12 @@ function App() {
 
     return(
         <div>
+            {showExpenses &&
             <Expenses
                 data={expenses}
                 people={checkboxValue}
                 deleteButton={onDeleteButtonClick}
-            />
+            />}
             <TextInput
                 placeholder={"SUBJECT"}
                 onChange={onSubjectChange}
@@ -119,7 +120,7 @@ function App() {
                 );
             })}
             <Button onClick={handleButtonClick} children={"Submit"}/>
-            {showDialog && (
+            {showDialog && 
                 <Dialog
                     header={"DELETE THE EXPENSE"}
                     description={"Do you want to delete this expense?"}
@@ -136,11 +137,9 @@ function App() {
                             />
                         </div>
                     }
-                />
-            )}
+                />}
         </div>
-    )
-}
-    
+    );
+};  
 
 export default App;
