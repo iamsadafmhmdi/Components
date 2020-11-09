@@ -3,6 +3,18 @@ import {Button} from "../../../../components";
 
 
 function Expenses({data, deleteButton}) {
+    const Total = () => {
+        const total = {};
+        Object.values(people).map(
+            (person) => (total[person.name] = { id: person.id, cost: 0 })
+        );
+        const costs = data.map((expense) => expense.costs);
+        costs.forEach((element) => {
+            element.map((expense) => {
+                total[expense.name].cost += expense.portion;
+            });
+        });
+
     return (
         <div>
             <div>
@@ -23,6 +35,7 @@ function Expenses({data, deleteButton}) {
                     </p>
                 ))}
             </div>
+            <Total />
         </div>
     );
 }
