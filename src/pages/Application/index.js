@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {Button, Dialog, Checkbox, TextInput} from '../../components/index';
+import {Expenses} from '../splitWise/component';
 
 
 const Persons = [
