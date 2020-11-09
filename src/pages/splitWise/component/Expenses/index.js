@@ -1,8 +1,8 @@
 import React from "react";
 import {Button} from "../../../../components";
+import "./index.css";
 
-
-function Expenses({data, deleteButton}) {
+function Expenses({ data, people, deleteButton }) {
     const Total = () => {
         const total = {};
         Object.values(people).map(
@@ -14,6 +14,18 @@ function Expenses({data, deleteButton}) {
                 total[expense.name].cost += expense.portion;
             });
         });
+
+        return (
+            <div>
+                <h1>Total</h1>
+                {Object.keys(total).map((name) => (
+                    <p key={total[name].id}>
+                        {name} : {total[name].cost}
+                    </p>
+                ))}
+            </div>
+        );
+    };
 
     return (
         <div>
