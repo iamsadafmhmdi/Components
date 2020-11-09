@@ -28,6 +28,7 @@ function App() {
     const [subjectInput, setSubjectInput] = useState("");
     const [expensesLastId, setExpensesLastId] = useState(0);
     const [showExpenses, setShowExpenses] = useState(false);
+    const [showDialog, setShowDialog] = useState(false);
     const onCostChange = useCallback((event) => {
         setCostInput(parseInt(event.target.value));
     }, []);
@@ -73,9 +74,17 @@ function App() {
         setSubjectInput("");
         setExpenses(updated);
     };
+    const onDeleteButtonClick = useCallback((expense) => {
+        setShowDialog(true);
+    }, []);
 
     return(
         <div>
+            <Expenses
+                data={expenses}
+                people={checkboxValue}
+                deleteButton={onDeleteButtonClick}
+            />
             <TextInput
                 placeholder={"SUBJECT"}
                 onChange={onSubjectChange}
@@ -98,7 +107,8 @@ function App() {
                     />
                 );
             })}
-            <Button onClick={handleButtonClick} children={"Submit"} />
+            <Button onClick={handleButtonClick} children={"Submit"}/>
+            
         </div>
     )
 }
