@@ -1,39 +1,75 @@
 import React, {useState, useCallback} from 'react';
-import {Button, Dialog, Checkbox} from '../../components/index';
+import {Button, Dialog, Checkbox, TextInput} from '../../components/index';
 
+
+const Persons = [
+    {
+        name: "A",
+        id: "1",
+        checked: false,
+    },
+    {
+        name: "B",
+        id: "2",
+        checked: false,
+    },
+    {
+        name: "C",
+        id: "3",
+        checked: false,
+    },
+];
 
 function App() {
-    const [showDialog, setShowDialog] = useState(false);
-    const handleClickButton = useCallback(() => {
-        setShowDialog(true);
+    const [checkboxValue, setCheckboxValue] = useState(Persons);
+    const [costInput, setCostInput] = useState("");
+    const [subjectInput, setSubjectInput] = useState("");
+    const onCostChange = useCallback((event) => {
+        setCostInput(parseInt(event.target.value));
     }, []);
+
+    const onSubjectChange = useCallback((event) => {
+        setSubjectInput(event.target.value);
+    }, []);
+
+    const handleCheckboxChange = useCallback(
+        (event) => {
+            const name = event.target.name;
+            const update = checkboxValue.map((person) => {
+                return person.name === name
+                    ? { ...person, checked: event.target.checked } : person });
+            setCheckboxValue(update);
+        },
+        [checkboxValue]
+    );
 
     return(
         <div>
-            <Button  
-            onClick = {handleClickButton}>
-                click
-            </Button>
-            {
-                showDialog && <Dialog
-                header = {'this is header'}
-                description = {'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti quasi\
-                 deserunt vitae suscipit assumenda qui nobis corrupti magni culpa. Obcaecati voluptat\
-                  consectetur deserunt ullam officia adip isci cumque sequi accusamus.'}
-                action = {
-                    <div>
-                        <Button>
-                            Confirm
-                        </Button>
-                        <Button
-                        disabled = {'disabled'}>
-                            Cancel
-                        </Button>
-                    </div>
-                }/>
-            }
+            <TextInput
+                placeholder={"SUBJECT"}
+                onChange={onSubjectChange}
+                value={subjectInput}
+            />
+            <TextInput
+                placeholder={"COST"}
+                onChange={onCostChange}
+                value={costInput}
+                type="number"
+                min="0"
+            />
+            {checkboxValue.map((checkbox) => {
+                return (
+                    <Checkbox
+                        children={checkbox.name}
+                        onChange={handleCheckboxChange}
+                        key={checkbox.id}
+                        checked={checkbox.checked}
+                    />
+                );
+            })}
         </div>
-    );
-};
+    )
+}
+    
 
 export default App;
