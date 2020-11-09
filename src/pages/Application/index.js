@@ -23,8 +23,11 @@ const Persons = [
 
 function App() {
     const [checkboxValue, setCheckboxValue] = useState(Persons);
+    const [expenses, setExpenses] = useState([]);
     const [costInput, setCostInput] = useState("");
     const [subjectInput, setSubjectInput] = useState("");
+    const [expensesLastId, setExpensesLastId] = useState(0);
+    const [showExpenses, setShowExpenses] = useState(false);
     const onCostChange = useCallback((event) => {
         setCostInput(parseInt(event.target.value));
     }, []);
@@ -44,11 +47,32 @@ function App() {
         [checkboxValue]
     );
 
+    const number = checkboxValue.filter((checkbox) => checkbox.checked).length;
+    const checkedPersons = () => {
+        return checkboxValue
+            .filter((checkbox) => checkbox.checked)
+            .map((person) => {
+                return {
+                    id: person.name,
+                    name: person.name,
+                    portion: costInput / number,
+                };
+            });
+    };
+
     const handleButtonClick = () => {
-        //update my expenses
-        //clear the inputs
-        //update total
-    }
+        setShowExpenses(true);
+        const updated = [...expenses];
+        updated.push({
+            id: expensesLastId,
+            subject: subjectInput,
+            costs: checkedPersons(),
+        });
+        setExpensesLastId(expensesLastId + 1);
+        setCostInput("");
+        setSubjectInput("");
+        setExpenses(updated);
+    };
 
     return(
         <div>
