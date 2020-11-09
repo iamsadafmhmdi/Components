@@ -108,7 +108,23 @@ function App() {
                 );
             })}
             <Button onClick={handleButtonClick} children={"Submit"}/>
-            
+            {showDialog && (
+                <Dialog
+                    header={"DELETE THE EXPENSE"}
+                    description={"Do you want to delete this expense?"}
+                    action={
+                        <div>
+                            <Button
+                                children={"NO, CANCEL"}
+                            />
+                            <Button
+                                children={"YES, I DO."}
+                                danger={true}
+                            />
+                        </div>
+                    }
+                />
+            )}
         </div>
     )
 }
