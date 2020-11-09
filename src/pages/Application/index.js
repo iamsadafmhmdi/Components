@@ -1,7 +1,7 @@
-import React, {useState, useCallback} from 'react';
-import {Button, Dialog, Checkbox, TextInput} from '../../components/index';
-import {Expenses} from '../splitWise/component';
-
+import React, { useState, useCallback } from "react";
+import { Button, Dialog, TextInput, Checkbox } from "../../components";
+import { Expenses } from "../splitWise/component";
+import './index.css';
 
 const Persons = [
     {
@@ -20,16 +20,15 @@ const Persons = [
         checked: false,
     },
 ];
-
 function App() {
     const [checkboxValue, setCheckboxValue] = useState(Persons);
     const [expenses, setExpenses] = useState([]);
+    const [showDialog, setShowDialog] = useState(false);
     const [costInput, setCostInput] = useState("");
     const [subjectInput, setSubjectInput] = useState("");
     const [expensesLastId, setExpensesLastId] = useState(0);
-    const [showExpenses, setShowExpenses] = useState(false);
-    const [showDialog, setShowDialog] = useState(false);
     const [deleted, setDeleted] = useState();
+    const [showExpenses, setShowExpenses] = useState(false);
     const onCostChange = useCallback((event) => {
         setCostInput(parseInt(event.target.value));
     }, []);
@@ -83,24 +82,24 @@ function App() {
     const onCancelButtonClick = useCallback(() => {
         setShowDialog(false);
     }, []);
-
     const onConfirmDeleteClick = useCallback(() => {
         setShowDialog(false);
         setExpenses(expenses.filter((element) => element.id !== deleted));
     }, [expenses, deleted]);
 
-    return(
+    return (
         <div>
-            {showExpenses &&
             <Expenses
                 data={expenses}
                 people={checkboxValue}
                 deleteButton={onDeleteButtonClick}
-            />}
+            />
+
             <TextInput
                 placeholder={"SUBJECT"}
                 onChange={onSubjectChange}
                 value={subjectInput}
+                className='text-input'
             />
             <TextInput
                 placeholder={"COST"}
@@ -108,7 +107,9 @@ function App() {
                 value={costInput}
                 type="number"
                 min="0"
+                className='text-input'
             />
+
             {checkboxValue.map((checkbox) => {
                 return (
                     <Checkbox
@@ -119,8 +120,8 @@ function App() {
                     />
                 );
             })}
-            <Button onClick={handleButtonClick} children={"Submit"}/>
-            {showDialog && 
+            <Button onClick={handleButtonClick} children={"Submit"} />
+            {showDialog && (
                 <Dialog
                     header={"DELETE THE EXPENSE"}
                     description={"Do you want to delete this expense?"}
@@ -137,9 +138,10 @@ function App() {
                             />
                         </div>
                     }
-                />}
+                />
+            )}
         </div>
     );
-};  
+}
 
 export default App;
