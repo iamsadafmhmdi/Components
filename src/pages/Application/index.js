@@ -43,6 +43,12 @@ function App() {
         [checkboxValue]
     );
 
+    const handleButtonClick = () => {
+        //update my expenses
+        //clear the inputs
+        //update total
+    }
+
     return(
         <div>
             <TextInput
@@ -67,6 +73,7 @@ function App() {
                     />
                 );
             })}
+            <Button onClick={handleButtonClick} children={"Submit"} />
         </div>
     )
 }
