@@ -16,8 +16,8 @@ function Expenses({ data, people, deleteButton }) {
         });
 
         return (
-            <div>
-                <h1>Total</h1>
+            <div className='total'>
+                <h1 className='head'>Total</h1>
                 {Object.keys(total).map((name) => (
                     <p key={total[name].id}>
                         {name} : {total[name].cost}
@@ -28,11 +28,11 @@ function Expenses({ data, people, deleteButton }) {
     };
 
     return (
-        <div>
+        <div className='expenses-container'>
             <div>
                 {data.map((expense) => (
-                    <p key={expense.id}>
-                        <span>{expense.subject.toUpperCase()}</span>
+                    <p key={expense.id} className='expenses'>
+                        <span className='subject'>{expense.subject.toUpperCase()}</span>
                         {expense.costs.map((person) => (
                             <span key={person.id}>
                                 &nbsp;&nbsp; - {person.name}:{person.portion}

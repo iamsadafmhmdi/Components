@@ -1,0 +1,25 @@
+.subject {
+    font-size: large;
+    color: rgb(0, 0, 0);
+}
+
+.expenses {
+    margin-left: 15px;
+}
+
+.head {
+    color: rgb(71, 71, 70);
+    padding-bottom: 15px;
+
+}
+
+.total {
+    float: right;
+    background-color: rgb(245, 244, 244);
+    width: 150px;
+    min-height: 200px;
+    box-shadow: 1px 1px 6px black;
+    margin: 15px;
+    padding: 10px;
+    line-height: 30px;
+}
