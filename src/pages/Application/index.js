@@ -29,6 +29,7 @@ function App() {
     const [expensesLastId, setExpensesLastId] = useState(0);
     const [showExpenses, setShowExpenses] = useState(false);
     const [showDialog, setShowDialog] = useState(false);
+    const [deleted, setDeleted] = useState();
     const onCostChange = useCallback((event) => {
         setCostInput(parseInt(event.target.value));
     }, []);
@@ -76,7 +77,17 @@ function App() {
     };
     const onDeleteButtonClick = useCallback((expense) => {
         setShowDialog(true);
+        setDeleted(expense);
     }, []);
+
+    const onCancelButtonClick = useCallback(() => {
+        setShowDialog(false);
+    }, []);
+
+    const onConfirmDeleteClick = useCallback(() => {
+        setShowDialog(false);
+        setExpenses(expenses.filter((element) => element.id !== deleted));
+    }, [expenses, deleted]);
 
     return(
         <div>
@@ -116,10 +127,12 @@ function App() {
                         <div>
                             <Button
                                 children={"NO, CANCEL"}
+                                onClick={onCancelButtonClick}
                             />
                             <Button
                                 children={"YES, I DO."}
                                 danger={true}
+                                onClick={onConfirmDeleteClick}
                             />
                         </div>
                     }
