@@ -89,11 +89,12 @@ function App() {
 
     return (
         <div>
-            <Expenses
-                data={expenses}
-                people={checkboxValue}
-                deleteButton={onDeleteButtonClick}
-            />
+            {showExpenses && (
+                <Expenses
+                    data={expenses}
+                    people={checkboxValue}
+                    deleteButton={onDeleteButtonClick}
+            />)}
 
             <TextInput
                 placeholder={"SUBJECT"}
