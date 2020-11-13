@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Button, Dialog, TextInput, Checkbox } from "../../components";
-import { Expenses } from "../splitWise/component";
+import { Expenses } from "../splitWise/components";
 import './index.css';
 
 const Persons = [
@@ -41,8 +41,7 @@ function App() {
         (event) => {
             const name = event.target.name;
             const update = checkboxValue.map((person) => {
-                return person.name === name
-                    ? { ...person, checked: event.target.checked } : person });
+                return person.name === name ? { ...person, checked: event.target.checked } : person });    
             setCheckboxValue(update);
         },
         [checkboxValue]
@@ -74,6 +73,7 @@ function App() {
         setSubjectInput("");
         setExpenses(updated);
     };
+
     const onDeleteButtonClick = useCallback((expense) => {
         setShowDialog(true);
         setDeleted(expense);
@@ -82,6 +82,7 @@ function App() {
     const onCancelButtonClick = useCallback(() => {
         setShowDialog(false);
     }, []);
+
     const onConfirmDeleteClick = useCallback(() => {
         setShowDialog(false);
         setExpenses(expenses.filter((element) => element.id !== deleted));
@@ -95,7 +96,6 @@ function App() {
                     people={checkboxValue}
                     deleteButton={onDeleteButtonClick}
             />)}
-
             <TextInput
                 placeholder={"SUBJECT"}
                 onChange={onSubjectChange}
@@ -110,7 +110,6 @@ function App() {
                 min="0"
                 className='text-input'
             />
-
             {checkboxValue.map((checkbox) => {
                 return (
                     <Checkbox
@@ -138,11 +137,10 @@ function App() {
                                 onClick={onConfirmDeleteClick}
                             />
                         </div>
-                    }
-                />
+                    }/>
             )}
         </div>
     );
-}
+};
 
 export default App;
