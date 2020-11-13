@@ -2,7 +2,11 @@ import React from "react";
 import {Button} from "../../../../components";
 import "./index.css";
 
-function Expenses({ data, people, deleteButton }) {
+function Expenses({ 
+    data, 
+    people, 
+    deleteButton 
+}) {
     const Total = () => {
         const total = {};
         Object.values(people).map(
