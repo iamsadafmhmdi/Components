@@ -33,7 +33,6 @@ function Expenses({
 
     return (
         <div className='expenses-container'>
-            <div>
                 {data.map((expense) => (
                     <p key={expense.id} className='expenses'>
                         <span className='subject'>{expense.subject.toUpperCase()}</span>
@@ -50,8 +49,7 @@ function Expenses({
                         />
                     </p>
                 ))}
-            </div>
-            <Total />
+            {Total()}
         </div>
     );
 }
