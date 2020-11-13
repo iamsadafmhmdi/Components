@@ -114,14 +114,14 @@ function App() {
             {checkboxValue.map((checkbox) => {
                 return (
                     <Checkbox
-                        children={checkbox.name}
+                        label={checkbox.name}
                         onChange={handleCheckboxChange}
                         key={checkbox.id}
                         checked={checkbox.checked}
                     />
                 );
             })}
-            <Button onClick={handleButtonClick} children={"Submit"} />
+            <Button onClick={handleButtonClick} label={"Submit"} />
             {showDialog && (
                 <Dialog
                     header={"DELETE THE EXPENSE"}
@@ -129,11 +129,11 @@ function App() {
                     action={
                         <div>
                             <Button
-                                children={"NO, CANCEL"}
+                                label={"NO, CANCEL"}
                                 onClick={onCancelButtonClick}
                             />
                             <Button
-                                children={"YES, I DO."}
+                                label={"YES, I DO."}
                                 danger={true}
                                 onClick={onConfirmDeleteClick}
                             />

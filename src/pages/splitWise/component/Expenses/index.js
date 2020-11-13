@@ -44,7 +44,7 @@ function Expenses({
                         ))}
                         &nbsp;&nbsp;
                         <Button
-                            children={"Delete"}
+                            label={"Delete"}
                             danger={true}
                             onClick={() => deleteButton(expense.id)}
                         />
