@@ -3,7 +3,7 @@ import './index.css'
 
 
 function Button ({
-    label,
+    children,
     danger=false,
     disabled=false,
     onClick,
@@ -15,7 +15,7 @@ function Button ({
             onClick={disabled ? undefined : onClick}
             value={value}
             tabIndex={disabled ? -1 : undefined}>
-            {label}
+            {children}
         </button>
     );
 };

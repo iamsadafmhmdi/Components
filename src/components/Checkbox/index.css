@@ -1,8 +1,8 @@
-.checkbox {
+input[type=checkbox] {
     padding: 5px;
     margin-right: 5px;
 }
 
-.label{
+label {
     padding: 10px;
 }
