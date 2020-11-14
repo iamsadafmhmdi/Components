@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Button, Dialog, Checkbox, TextInput} from '../../components/index';
+import {Button, Checkbox, TextInput} from '../../components';
 
 
 const Persons = [
@@ -36,18 +36,11 @@ function App() {
         (event) => {
             const name = event.target.name;
             const update = checkboxValue.map((person) => {
-                return person.name === name
-                    ? { ...person, checked: event.target.checked } : person });
+                return person.name === name ? { ...person, checked: event.target.checked } : person });  
             setCheckboxValue(update);
         },
         [checkboxValue]
     );
-
-    const handleButtonClick = () => {
-        //update my expenses
-        //clear the inputs
-        //update total
-    }
 
     return(
         <div>
@@ -66,17 +59,16 @@ function App() {
             {checkboxValue.map((checkbox) => {
                 return (
                     <Checkbox
-                        children={checkbox.name}
+                        label={checkbox.name}
                         onChange={handleCheckboxChange}
                         key={checkbox.id}
                         checked={checkbox.checked}
                     />
                 );
             })}
-            <Button onClick={handleButtonClick} children={"Submit"} />
+            <Button label="Submit"/>
         </div>
-    )
-}
-    
+    );
+};
 
 export default App;

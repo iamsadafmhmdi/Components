@@ -3,14 +3,14 @@ import './index.css';
 
 
 function Checkbox({
-    children,
+    label,
     checked,
     onChange
 }) {
     return(
             <label className='label'>
                     <input className='checkbox' type='checkbox' checked={checked} onChange={onChange} />
-                {children}
+                {label}
             </label>
     );
 };
