@@ -9,7 +9,7 @@ function Checkbox({
 }) {
     return(
             <label>
-                    <input type='checkbox' checked={checked} onChange={onChange} />
+                    <input type='checkbox' checked={checked} onChange={onChange} name={label} />
                 {label}
             </label>
     );
