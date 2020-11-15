@@ -30,7 +30,8 @@ function Expenses({
     },[data, people]) ;
 
     return (
-        <div className='expenses-container'>
+        <div>
+            <div className='expenses-container'>
                 {data.map((expense) => (
                     <p key={expense.id} className='expenses'>
                         <span className='subject'>{expense.subject.toUpperCase()}</span>
@@ -43,6 +44,8 @@ function Expenses({
                         <Button danger onClick={() => deleteButton(expense.id)}>DELETE</Button>
                     </p>
                 ))}
+            
+            </div>
             {Total()}
         </div>
     );
