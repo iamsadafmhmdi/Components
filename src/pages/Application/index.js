@@ -71,16 +71,16 @@ function App() {
         setExpenses(updated);
     },[checkedPersons, expenses, subjectInput,expensesLastId]);
 
-    const onDeleteButtonClick = useCallback((expense) => {
+    const handleDeleteButtonClick = useCallback((expense) => {
         setShowDialog(true);
         setDeleted(expense);
     }, []);
 
-    const onCancelButtonClick = useCallback(() => {
+    const handleCancelButtonClick = useCallback(() => {
         setShowDialog(false);
     }, []);
 
-    const onConfirmDeleteClick = useCallback(() => {
+    const handleConfirmDeleteClick = useCallback(() => {
         setShowDialog(false);
         setExpenses(expenses.filter((element) => element.id !== deleted));
     }, [expenses, deleted]);
@@ -91,7 +91,7 @@ function App() {
                 <Expenses
                     data={expenses}
                     people={checkboxValue}
-                    deleteButton={onDeleteButtonClick}
+                    deleteButton={handleDeleteButtonClick}
             />)}
             <TextInput
                 placeholder='SUBJECT'
@@ -120,8 +120,8 @@ function App() {
                     description='Do you want to delete this expense?'
                     action={
                         <div>
-                            <Button onClick={onCancelButtonClick}>No, CANCEL</Button>
-                            <Button danger onClick={onConfirmDeleteClick}>YES, I DO</Button>
+                            <Button onClick={handleCancelButtonClick}>No, CANCEL</Button>
+                            <Button danger onClick={handleConfirmDeleteClick}>YES, I DO</Button>
                         </div>
                     }/>
             )}
