@@ -65,7 +65,7 @@ function App() {
             subject: subjectInput,
             costs: checkedPersons,
         });
-        setExpensesLastId(expensesLastId + 1);
+        setExpensesLastId(prevState => prevState + 1);
         setCostInput('');
         setSubjectInput('');
         setExpenses(updated);
