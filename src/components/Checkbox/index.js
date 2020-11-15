@@ -8,8 +8,8 @@ function Checkbox({
     onChange
 }) {
     return(
-            <label className='label'>
-                    <input className='checkbox' type='checkbox' checked={checked} onChange={onChange} />
+            <label>
+                    <input type='checkbox' checked={checked} onChange={onChange} />
                 {label}
             </label>
     );

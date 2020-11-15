@@ -1,55 +1,53 @@
-import React, { useState, useCallback } from "react";
-import { Button, Dialog, TextInput, Checkbox } from "../../components";
-import { Expenses } from "../splitWise/components";
-import './index.css';
+import React, { useState, useCallback, useMemo } from 'react';
+import { Button, Dialog, TextInput, Checkbox } from '../../components';
+import { Expenses } from '../splitWise/components';
+
 
 const Persons = [
     {
-        name: "A",
-        id: "1",
+        name: 'A',
+        id: '1',
         checked: false,
     },
     {
-        name: "B",
-        id: "2",
+        name: 'B',
+        id: '2',
         checked: false,
     },
     {
-        name: "C",
-        id: "3",
+        name: 'C',
+        id: '3',
         checked: false,
     },
 ];
+
 function App() {
     const [checkboxValue, setCheckboxValue] = useState(Persons);
     const [expenses, setExpenses] = useState([]);
     const [showDialog, setShowDialog] = useState(false);
-    const [costInput, setCostInput] = useState("");
-    const [subjectInput, setSubjectInput] = useState("");
+    const [costInput, setCostInput] = useState('');
+    const [subjectInput, setSubjectInput] = useState('');
     const [expensesLastId, setExpensesLastId] = useState(0);
     const [deleted, setDeleted] = useState();
     const [showExpenses, setShowExpenses] = useState(false);
-    const onCostChange = useCallback((event) => {
+    const handleCostChange = useCallback((event) => {
         setCostInput(parseInt(event.target.value));
     }, []);
 
-    const onSubjectChange = useCallback((event) => {
+    const handleSubjectChange = useCallback((event) => {
         setSubjectInput(event.target.value);
     }, []);
 
-    const handleCheckboxChange = useCallback(
-        (event) => {
+    const handleCheckboxChange = useCallback((event) => {
             const name = event.target.name;
-            const update = checkboxValue.map((person) => {
-                return person.name === name ? { ...person, checked: event.target.checked } : person });    
+            const update = checkboxValue.map((person) => person.name === name
+                ? { ...person, checked: event.target.checked } 
+                : person );    
             setCheckboxValue(update);
-        },
-        [checkboxValue]
-    );
+        },[checkboxValue]);
 
     const number = checkboxValue.filter((checkbox) => checkbox.checked).length;
-    const checkedPersons = () => {
-        return checkboxValue
+    const checkedPersons = useMemo(() => checkboxValue
             .filter((checkbox) => checkbox.checked)
             .map((person) => {
                 return {
@@ -57,22 +55,21 @@ function App() {
                     name: person.name,
                     portion: costInput / number,
                 };
-            });
-    };
+            }),[checkboxValue, costInput, number]) ;
 
-    const handleButtonClick = () => {
+    const handleButtonClick = useCallback(() => {
         setShowExpenses(true);
         const updated = [...expenses];
         updated.push({
             id: expensesLastId,
             subject: subjectInput,
-            costs: checkedPersons(),
+            costs: checkedPersons,
         });
         setExpensesLastId(expensesLastId + 1);
-        setCostInput("");
-        setSubjectInput("");
+        setCostInput('');
+        setSubjectInput('');
         setExpenses(updated);
-    };
+    },[checkedPersons, expenses, subjectInput,expensesLastId]);
 
     const onDeleteButtonClick = useCallback((expense) => {
         setShowDialog(true);
@@ -97,45 +94,34 @@ function App() {
                     deleteButton={onDeleteButtonClick}
             />)}
             <TextInput
-                placeholder={"SUBJECT"}
-                onChange={onSubjectChange}
+                placeholder='SUBJECT'
+                onChange={handleSubjectChange}
                 value={subjectInput}
-                className='text-input'
             />
             <TextInput
-                placeholder={"COST"}
-                onChange={onCostChange}
+                placeholder='COST'
+                onChange={handleCostChange}
                 value={costInput}
-                type="number"
-                min="0"
-                className='text-input'
+                type='number'
+                min='0'
             />
-            {checkboxValue.map((checkbox) => {
-                return (
+            {checkboxValue.map((checkbox) =>
                     <Checkbox
                         label={checkbox.name}
                         onChange={handleCheckboxChange}
                         key={checkbox.id}
                         checked={checkbox.checked}
                     />
-                );
-            })}
-            <Button onClick={handleButtonClick} label={"Submit"} />
+                )}
+            <Button onClick={handleButtonClick}>SUBMIT</Button>
             {showDialog && (
                 <Dialog
-                    header={"DELETE THE EXPENSE"}
-                    description={"Do you want to delete this expense?"}
+                    header='DELETE THE EXPENSE'
+                    description='Do you want to delete this expense?'
                     action={
                         <div>
-                            <Button
-                                label={"NO, CANCEL"}
-                                onClick={onCancelButtonClick}
-                            />
-                            <Button
-                                label={"YES, I DO."}
-                                danger={true}
-                                onClick={onConfirmDeleteClick}
-                            />
+                            <Button onClick={onCancelButtonClick}>No, CANCEL</Button>
+                            <Button danger onClick={onConfirmDeleteClick}>YES, I DO</Button>
                         </div>
                     }/>
             )}

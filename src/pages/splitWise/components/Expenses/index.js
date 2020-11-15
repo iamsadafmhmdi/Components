@@ -1,6 +1,6 @@
-import React from "react";
-import {Button} from "../../../../components";
-import "./index.css";
+import React from 'react';
+import {Button} from '../../../../components';
+import './index.css';
 
 function Expenses({ 
     data, 
@@ -14,10 +14,8 @@ function Expenses({
         );
         const costs = data.map((expense) => expense.costs);
         costs.forEach((element) => {
-            element.map((expense) => {
-                total[expense.name].cost += expense.portion;
-            });
-        });
+            element.map((expense) => total[expense.name].cost += expense.portion);
+            });   
 
         return (
             <div className='total'>
@@ -43,8 +41,8 @@ function Expenses({
                         ))}
                         &nbsp;&nbsp;
                         <Button
-                            label={"Delete"}
-                            danger={true}
+                            children='Delete'
+                            danger
                             onClick={() => deleteButton(expense.id)}
                         />
                     </p>
