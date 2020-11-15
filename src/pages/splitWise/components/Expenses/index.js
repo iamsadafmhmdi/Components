@@ -40,11 +40,7 @@ function Expenses({
                             </span>
                         ))}
                         &nbsp;&nbsp;
-                        <Button
-                            children='Delete'
-                            danger
-                            onClick={() => deleteButton(expense.id)}
-                        />
+                        <Button danger onClick={() => deleteButton(expense.id)}>DELETE</Button>
                     </p>
                 ))}
             {Total()}
