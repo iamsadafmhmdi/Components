@@ -65,7 +65,7 @@ function App() {
             subject: subjectInput,
             costs: checkedPersons,
         });
-        setExpensesLastId(prevState => prevState + 1);
+        setExpensesLastId(prevExpenseLastId => prevExpenseLastId + 1);
         setCostInput('');
         setSubjectInput('');
         setExpenses(updated);
@@ -82,8 +82,8 @@ function App() {
 
     const handleConfirmDeleteClick = useCallback(() => {
         setShowDialog(false);
-        setExpenses(expenses.filter((element) => element.id !== deleted));
-    }, [expenses, deleted]);
+        setExpenses(prevExpenses => prevExpenses.filter((element) => element.id !== deleted));
+    }, [deleted]);
 
     return (
         <div>
