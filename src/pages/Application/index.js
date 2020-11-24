@@ -5,15 +5,15 @@ import {Button, TextInput, Checkbox} from '../../components';
 const Persons = [
     {
         name: 'A',
-        id: '1',
+        id: '0',
     },
     {
         name: 'B',
-        id: '2',
+        id: '1',
     },
     {
         name: 'C',
-        id: '3',
+        id: '2',
     },
 ];
 
@@ -34,10 +34,13 @@ function App() {
 
     const handleCheckboxChange = useCallback((event) => {
             const name = event.target.name;
-            const update = checkboxesValue.map((person) => person.name === name
-                ? { ...person, checked: event.target.checked } 
-                : person );    
+            const targetId = Persons.find(person => person.name === name).id
+            const update = checkboxesValue.map((person)=> person.id === targetId 
+            ? ({...person, checked: event.target.checked})
+            : person);
             setCheckboxesValue(update);
+            console.log(targetId)
+            
         },[checkboxesValue]);
 
     return (
