@@ -1,27 +1,27 @@
-import React, { useState, useCallback } from 'react';
-import { Button, TextInput, Checkbox } from '../../components';
+import React, {useState, useCallback} from 'react';
+import {Button, TextInput, Checkbox} from '../../components';
 
 
 const Persons = [
     {
         name: 'A',
         id: '1',
-        checked: false,
     },
     {
         name: 'B',
         id: '2',
-        checked: false,
     },
     {
         name: 'C',
         id: '3',
-        checked: false,
     },
 ];
 
 function App() {
-    const [checkboxValue, setCheckboxValue] = useState(Persons);
+    const [checkboxesValue, setCheckboxesValue] = useState(Persons.map(({id}) => ({
+        id,
+        checked: false,
+    })));
     const [costInput, setCostInput] = useState('');
     const [subjectInput, setSubjectInput] = useState('');
     const handleCostChange = useCallback((event) => {
@@ -34,11 +34,11 @@ function App() {
 
     const handleCheckboxChange = useCallback((event) => {
             const name = event.target.name;
-            const update = checkboxValue.map((person) => person.name === name
+            const update = checkboxesValue.map((person) => person.name === name
                 ? { ...person, checked: event.target.checked } 
                 : person );    
-            setCheckboxValue(update);
-        },[checkboxValue]);
+            setCheckboxesValue(update);
+        },[checkboxesValue]);
 
     return (
         <div>
@@ -56,12 +56,12 @@ function App() {
                 min='0'
                 className='text-input'
             />
-            {checkboxValue.map((checkbox) =>
+            {checkboxesValue.map(({checked, id}) =>
                     <Checkbox
-                        label={checkbox.name}
+                        label={Persons.find(person=> person.id === id).name}
                         onChange={handleCheckboxChange}
-                        key={checkbox.id}
-                        checked={checkbox.checked}
+                        key={id}
+                        checked={checked}
                     />
                 )}
             <Button>SUBMIT</Button>

@@ -5,11 +5,11 @@ import './index.css';
 function Checkbox({
     label,
     checked,
-    onChange
+    onChange,
 }) {
     return(
             <label>
-                <input type='checkbox' checked={checked} onChange={onChange}/>
+                <input type='checkbox' checked={checked} onChange={onChange} name={label}/>
                 {label}
             </label>
     );
