@@ -38,9 +38,7 @@ function App() {
             const update = checkboxesValue.map((person)=> person.id === targetId 
             ? ({...person, checked: event.target.checked})
             : person);
-            setCheckboxesValue(update);
-            console.log(targetId)
-            
+            setCheckboxesValue(update)ک 
         },[checkboxesValue]);
 
     return (
